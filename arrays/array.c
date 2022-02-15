@@ -34,6 +34,15 @@ int array_capacity(DSArray* arr) {
   return arr->capacity;
 }
 
+bool array_is_empty(DSArray* arr) {
+  if(arr == NULL) {
+    abort();
+  }
+  if(arr->size == 0) return true;
+  return false; 
+}
+
 void main() {
   DSArray* arr = array_new(10);
+  printf("%i",array_is_empty(arr));
 }

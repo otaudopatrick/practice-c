@@ -1,3 +1,4 @@
+#include <stdbool.h>
 typedef struct ImplementationArray {
   int size;
   int capacity;
@@ -7,3 +8,4 @@ typedef struct ImplementationArray {
 DSArray* array_new(int capacity);
 int array_size(DSArray* arr);
 int array_capacity(DSArray* arr);
+bool array_is_empty(DSArray* arr);
