@@ -14,3 +14,4 @@ void array_push(DSArray* arr, int item);
 void check_pointer(void *p);
 void array_print(DSArray* arr);
 void array_insert(DSArray* arr, int index, int item);
+void array_prepend(DSArray* arr,int item);

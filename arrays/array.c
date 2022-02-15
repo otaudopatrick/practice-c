@@ -66,6 +66,9 @@ void array_insert(DSArray* arr, int index, int item) {
   }
   *(arr->data + index) = item;
 }
+void array_prepend(DSArray* arr, int item){
+  array_insert(arr,0,item);
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -84,6 +87,7 @@ void main() {
   array_push(arr, 9);
   array_print(arr);
   printf("\n");
-  array_insert(arr,8, 50);
+  array_prepend(arr,50);
   array_print(arr);
+  
 }
