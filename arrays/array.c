@@ -69,6 +69,15 @@ void array_insert(DSArray* arr, int index, int item) {
 void array_prepend(DSArray* arr, int item){
   array_insert(arr,0,item);
 }
+int array_pop(DSArray* arr){
+  check_pointer(arr);
+  if(array_is_empty(arr)){
+    abort();
+  }
+  int popped_value = *(arr->data + arr->size - 1);
+  --(arr->size);
+  return popped_value;
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -87,7 +96,7 @@ void main() {
   array_push(arr, 9);
   array_print(arr);
   printf("\n");
-  array_prepend(arr,50);
+  printf("%d\n",array_pop(arr));
+  printf("%d\n",array_pop(arr));
   array_print(arr);
-  
 }
