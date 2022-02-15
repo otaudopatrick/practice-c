@@ -90,6 +90,18 @@ int array_delete(DSArray* arr, int index) {
   --(arr->size);
   
 }
+void array_remove(DSArray* arr, int item){
+  check_pointer(arr);
+  for (int i = 0; i < arr->size; i++)
+  {
+    int arr_value = *(arr->data + i);
+    if(arr_value == item) {
+      array_delete(arr,i);
+      (arr->size + 1) - 1;
+      i--;
+    }
+  }
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -101,14 +113,13 @@ void main() {
   array_push(arr, 2);
   array_push(arr, 3);
   array_push(arr, 4);
-  array_push(arr, 5);
+  array_push(arr, 8);
   array_push(arr, 6);
-  array_push(arr, 7);
+  array_push(arr, 8);
   array_push(arr, 8);
   array_push(arr, 9);
   array_print(arr);
   printf("\n\n");
-  array_delete(arr, 8);
-  array_delete(arr, 0);
+  array_remove(arr,8);
   array_print(arr);
 }
