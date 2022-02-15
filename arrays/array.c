@@ -55,6 +55,17 @@ void array_print(DSArray* arr) {
   printf(" ]");
   
 }
+void array_insert(DSArray* arr, int index, int item) {
+  if (index < 0 || index > arr->size - 1) {
+    abort();
+  }
+  check_pointer(arr);
+  for (int i = arr->size; i >= index ; i--)
+  {
+    *(arr->data + arr->size + 1) = *(arr->data + i);
+  }
+  *(arr->data + index) = item;
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -62,7 +73,17 @@ void check_pointer(void *p) {
 }
 void main() {
   DSArray* arr = array_new(10);
-  array_push(arr, 10);
-  array_push(arr, 11);
+  array_push(arr, 1);
+  array_push(arr, 2);
+  array_push(arr, 3);
+  array_push(arr, 4);
+  array_push(arr, 5);
+  array_push(arr, 6);
+  array_push(arr, 7);
+  array_push(arr, 8);
+  array_push(arr, 9);
+  array_print(arr);
+  printf("\n");
+  array_insert(arr,8, 50);
   array_print(arr);
 }
