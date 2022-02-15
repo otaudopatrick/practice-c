@@ -40,6 +40,21 @@ void array_push(DSArray* arr, int item) {
     ++(arr->size);
   }
 }
+void array_print(DSArray* arr) {
+  printf("Capacity: %d\n", arr->capacity);
+  printf("Size: %d\n", arr->size);
+  printf("[ ");
+  for ( int i = 0; i < arr->size; i++)
+  {
+    if(i!=0){
+      printf(" , ");
+    }
+    printf("%d",*(arr->data + i));
+    
+  }
+  printf(" ]");
+  
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -49,5 +64,5 @@ void main() {
   DSArray* arr = array_new(10);
   array_push(arr, 10);
   array_push(arr, 11);
-  printf("%d",array_at(arr,1));
+  array_print(arr);
 }
