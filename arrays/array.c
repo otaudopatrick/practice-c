@@ -19,6 +19,12 @@ DSArray *array_new(int capacity){
 
   return arr;
 }
+int array_size(DSArray* arr) {
+  if(arr == NULL) {
+    abort();
+  }
+  return arr->size;
+}
 
 void main() {
   DSArray* arr = array_new(10);
