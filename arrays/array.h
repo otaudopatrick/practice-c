@@ -10,4 +10,5 @@ int array_size(DSArray* arr);
 int array_capacity(DSArray* arr);
 bool array_is_empty(DSArray* arr);
 int array_at(DSArray* arr, int index);
+void array_push(DSArray* arr, int item);
 void check_pointer(void *p);

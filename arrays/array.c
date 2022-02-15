@@ -33,6 +33,13 @@ int array_at(DSArray* arr, int index){
   if(index > arr->size - 1 || index < 0 ) abort();
   return arr->data[index];
 }
+void array_push(DSArray* arr, int item) {
+  check_pointer(arr);
+  if(array_size(arr) < array_capacity(arr) ){
+    *(arr->data + arr->size ) = item;
+    ++(arr->size);
+  }
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -40,5 +47,7 @@ void check_pointer(void *p) {
 }
 void main() {
   DSArray* arr = array_new(10);
-  printf("%d",array_at(arr, 1));
+  array_push(arr, 10);
+  array_push(arr, 11);
+  printf("%d",array_at(arr,1));
 }
