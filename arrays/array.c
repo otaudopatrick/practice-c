@@ -19,11 +19,19 @@ DSArray *array_new(int capacity){
 
   return arr;
 }
+
 int array_size(DSArray* arr) {
   if(arr == NULL) {
     abort();
   }
   return arr->size;
+}
+
+int array_capacity(DSArray* arr) {
+  if(arr == NULL){
+    abort();
+  }
+  return arr->capacity;
 }
 
 void main() {
