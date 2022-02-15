@@ -4,45 +4,41 @@
 
 DSArray *array_new(int capacity){
   DSArray *arr =  malloc(sizeof(DSArray));
-  
-  if(arr == NULL) {
-    abort();
-  }
-
+  check_pointer(arr);
   arr->size = 0;
   arr->capacity = capacity;
   arr->data = (int *) malloc(sizeof(int) * capacity);
-
-  if(arr->data == NULL) {
-    abort();
-  }
-
+  check_pointer(arr->data);
   return arr;
 }
 
 int array_size(DSArray* arr) {
-  if(arr == NULL) {
-    abort();
-  }
+  check_pointer(arr);
   return arr->size;
 }
 
 int array_capacity(DSArray* arr) {
-  if(arr == NULL){
-    abort();
-  }
+  check_pointer(arr);
   return arr->capacity;
 }
 
 bool array_is_empty(DSArray* arr) {
-  if(arr == NULL) {
-    abort();
-  }
+  check_pointer(arr);
   if(arr->size == 0) return true;
   return false; 
 }
 
+int array_at(DSArray* arr, int index){
+  check_pointer(arr);
+  if(index > arr->size - 1 || index < 0 ) abort();
+  return arr->data[index];
+}
+void check_pointer(void *p) {
+  if(p == NULL){
+    abort();
+  }
+}
 void main() {
   DSArray* arr = array_new(10);
-  printf("%i",array_is_empty(arr));
+  printf("%d",array_at(arr, 1));
 }
