@@ -102,6 +102,18 @@ void array_remove(DSArray* arr, int item){
     }
   }
 }
+int array_find(DSArray* arr, int item){
+  check_pointer(arr);
+  for (int i = 0; i < arr->size; i++)
+  {
+    int arr_value = *(arr->data + i);
+    if(arr_value == item) {
+      return i;
+    }
+  }
+  return -1;
+  
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -120,6 +132,6 @@ void main() {
   array_push(arr, 9);
   array_print(arr);
   printf("\n\n");
-  array_remove(arr,8);
+  printf("%d\n",array_find(arr, 4));
   array_print(arr);
 }

@@ -18,3 +18,4 @@ void array_prepend(DSArray* arr,int item);
 int array_pop(DSArray* arr);
 int array_delete(DSArray* arr, int index);
 void array_remove(DSArray* arr, int item);
+int array_find(DSArray* arr, int item);
