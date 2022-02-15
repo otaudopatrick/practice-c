@@ -78,6 +78,18 @@ int array_pop(DSArray* arr){
   --(arr->size);
   return popped_value;
 }
+int array_delete(DSArray* arr, int index) {
+  check_pointer(arr);
+  if(index < 0 || index > arr->size - 1){
+    abort();
+  }
+  for (int i = index; i < arr->size; i++)
+  {
+    *(arr->data + i) = *(arr->data +(i+1));
+  }
+  --(arr->size);
+  
+}
 void check_pointer(void *p) {
   if(p == NULL){
     abort();
@@ -95,8 +107,8 @@ void main() {
   array_push(arr, 8);
   array_push(arr, 9);
   array_print(arr);
-  printf("\n");
-  printf("%d\n",array_pop(arr));
-  printf("%d\n",array_pop(arr));
+  printf("\n\n");
+  array_delete(arr, 8);
+  array_delete(arr, 0);
   array_print(arr);
 }
