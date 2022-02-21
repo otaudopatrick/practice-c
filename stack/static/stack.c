@@ -24,3 +24,10 @@ int stack_size(DSStack* st) {
   else
     return st->qtd;
 }
+
+int stack_is_full(DSStack* st) {
+  if(st == NULL) 
+    return -1;
+  else
+    return (st->qtd == MAX);
+}
