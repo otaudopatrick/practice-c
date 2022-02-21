@@ -18,3 +18,9 @@ DSStack* stack_create() {
 void stack_free(DSStack* st){
     free(st);
 }
+int stack_size(DSStack* st) {
+  if(st == NULL)
+    return -1;
+  else
+    return st->qtd;
+}
