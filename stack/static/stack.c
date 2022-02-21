@@ -31,3 +31,9 @@ int stack_is_full(DSStack* st) {
   else
     return (st->qtd == MAX);
 }
+int stack_is_empty(DSStack* st) {
+  if(st == NULL) 
+    return -1;
+  else
+    return (st->qtd == 0);
+}
