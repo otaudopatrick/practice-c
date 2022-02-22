@@ -46,7 +46,13 @@ int stack_push(DSStack* st, int value) {
   st->qtd ++;
   return 1;
 }
-
+int stack_pop(DSStack* st) {
+  if(st == NULL || st->qtd == 0) {
+    return 0;
+  }
+  st->qtd--;
+  return 1;
+}
 void stack_print(DSStack* st) {
   if(st  == NULL) abort();
 
