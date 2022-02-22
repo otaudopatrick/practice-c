@@ -37,3 +37,11 @@ int stack_is_empty(DSStack* st) {
   else
     return (st->qtd == 0);
 }
+
+int stack_push(DSStack* st, int value) {
+  if(st == NULL) return 0;
+  if(stack_is_full(st)) return 0;
+  st->data[st->qtd] = value;
+  st->qtd ++;
+  return 1;
+}
