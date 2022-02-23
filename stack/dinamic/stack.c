@@ -39,6 +39,14 @@ int stack_size(DSStack* st){
   }
   return count;
 }
+
 int stack_is_full(DSStack* st) {
+  if(st == NULL) return -1;
+  return 0;
+}
+
+int stack_is_empty(DSStack* st) {
+  if(st == NULL)  return  -1;
+  if((*st) == NULL) return 1;
   return 0;
 }
