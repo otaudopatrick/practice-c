@@ -50,3 +50,12 @@ int stack_is_empty(DSStack* st) {
   if((*st) == NULL) return 1;
   return 0;
 }
+
+int stack_push(DSStack* st, int value) {
+  if(st == NULL) return -1;
+  if(stack_is_full(st)) return 0;
+  Elem* node = (Elem*) malloc(sizeof(Elem));
+  node->data = value;
+  node->next = (*st)->next;
+  (*st)->next = node;
+}
