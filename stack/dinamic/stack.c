@@ -29,3 +29,13 @@ void stack_free(DSStack* st) {
     free(st);
   }
 }
+
+int stack_size(DSStack* st){
+  if(st == NULL) return -1;
+  int count = 0;
+  while ((*st) != NULL){
+    count++;
+    *st = (*st)->next;
+  }
+  return count;
+}
