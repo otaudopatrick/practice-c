@@ -57,5 +57,15 @@ int stack_push(DSStack* st, int value) {
   Elem* node = (Elem*) malloc(sizeof(Elem));
   node->data = value;
   node->next = (*st)->next;
-  (*st)->next = node;
+  (*st) = node;
+  return 1;
+}
+
+int stack_pop(DSStack* st) {
+ if(st == NULL) return -1;
+ if(stack_is_empty(st)) return 0; 
+ Elem* node = *st;
+ *st = node->next;
+ free(node);
+ return 1;
 }
