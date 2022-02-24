@@ -2,16 +2,17 @@
 #include <stdio.h>
 #include "./queue.h"
 
+struct dsqueue {
+  struct node *head;
+  struct node *tail;
+};
 struct node
 {
   int data;
-  struct Node* next;
+  struct node *next;
 };
+typedef struct node Node;
 
-struct dsqueue {
-  struct Node* head;
-  struct Node* tail;
-};
 
 DSQueue* queue_create() {
   DSQueue* queue = (DSQueue*) malloc(sizeof(DSQueue));
@@ -22,13 +23,28 @@ DSQueue* queue_create() {
   return queue;
 }
 void queue_free(DSQueue* queue) {
-  if(queue->head != NULL) {
-    Node* node = queue->head;
-    queue->head = node->next;
-    free(node);
+  if(queue != NULL) {
+    Node* node;
+    while (queue->head != NULL)
+    {  
+      node = queue->head;
+      queue->head = node->next;
+      free(node);
+    }
   }
   free(queue);
 }
+int queue_size(DSQueue* queue) {
+  if(queue != NULL) {
+    Node*  node = queue->head;
+    while (node != NULL)
+    {
+      node = node->next;
+    }
+  }
+  return 0;
+}
 void main(){
   DSQueue* queue = queue_create();
+  printf("Queue size: %d ",queue_size(queue));
 }
