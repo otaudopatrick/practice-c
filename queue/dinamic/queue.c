@@ -35,14 +35,15 @@ void queue_free(DSQueue* queue) {
   free(queue);
 }
 int queue_size(DSQueue* queue) {
-  if(queue != NULL) {
-    Node*  node = queue->head;
-    while (node != NULL)
-    {
-      node = node->next;
-    }
+  if(queue == NULL) return -1;
+  int count = 0;
+  Node*  node = queue->head;
+  while (node != NULL)
+  {
+    count++;
+    node = node->next;
   }
-  return 0;
+  return count;
 }
 int queue_is_full(DSQueue* queue) {
   if(queue != NULL) return 0;
@@ -52,7 +53,26 @@ int queue_is_empty(DSQueue* queue) {
   if(queue != NULL) return -1 ;
   return (queue->head == NULL);
 }
+
+int  queue_enqueue(DSQueue* queue, int value) {
+  if(queue == NULL) return -1;
+  Node* node = (Node*) malloc(sizeof(Node));
+  if(node == NULL) return -1;
+  node->data = value;
+  node->next = NULL;
+  if(queue->head == NULL) {
+    queue->head = node;
+  }else{
+    queue->tail->next = node;
+  }
+  queue->tail = node;
+  return 1;
+}
 void main(){
   DSQueue* queue = queue_create();
+  queue_enqueue(queue, 10);
+  queue_enqueue(queue, 30);
+  queue_enqueue(queue, 2310);
+  queue_enqueue(queue, 1123123);
   printf("Queue size: %d ",queue_size(queue));
 }

@@ -5,3 +5,5 @@ void queue_free(DSQueue* queue);
 int queue_size(DSQueue* queue);
 int queue_is_full(DSQueue* queue);
 int queue_is_empty(DSQueue* queue);
+int  queue_enqueue(DSQueue* queue, int value);
+int  queue_denqueue(DSQueue* queue);
