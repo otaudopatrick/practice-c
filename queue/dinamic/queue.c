@@ -68,11 +68,19 @@ int  queue_enqueue(DSQueue* queue, int value) {
   queue->tail = node;
   return 1;
 }
+
+int  queue_denqueue(DSQueue* queue) {
+  if(queue == NULL) -1;
+  Node* node = queue->head;
+  queue->head = node->next;
+  free(node);
+}
 void main(){
   DSQueue* queue = queue_create();
   queue_enqueue(queue, 10);
   queue_enqueue(queue, 30);
   queue_enqueue(queue, 2310);
+  queue_denqueue(queue);
   queue_enqueue(queue, 1123123);
   printf("Queue size: %d ",queue_size(queue));
 }
