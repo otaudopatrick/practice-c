@@ -21,7 +21,14 @@ DSQueue* queue_create() {
   }
   return queue;
 }
-
+void queue_free(DSQueue* queue) {
+  if(queue->head != NULL) {
+    Node* node = queue->head;
+    queue->head = node->next;
+    free(node);
+  }
+  free(queue);
+}
 void main(){
   DSQueue* queue = queue_create();
 }
