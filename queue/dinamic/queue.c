@@ -48,6 +48,10 @@ int queue_is_full(DSQueue* queue) {
   if(queue != NULL) return 0;
   return -1;
 }
+int queue_is_empty(DSQueue* queue) {
+  if(queue != NULL) return -1 ;
+  return (queue->head == NULL);
+}
 void main(){
   DSQueue* queue = queue_create();
   printf("Queue size: %d ",queue_size(queue));
