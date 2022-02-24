@@ -7,4 +7,5 @@ void queue_free(DSqueue* queue);
 int queue_size(DSqueue* queue);
 int queue_is_full(DSqueue* queue);
 int queue_is_empty(DSqueue* queue);
+int  queue_enqueue(DSqueue* queue, int value);
 void check_pointer(void *p);

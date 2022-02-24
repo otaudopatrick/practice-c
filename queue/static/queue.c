@@ -5,7 +5,7 @@
 struct dsqueue
 {
   int size, head, tail;
-  int data[];
+  int data[MAX];
 };
 
 
@@ -17,7 +17,6 @@ DSqueue* queue_create() {
     queue->head = 0;
     queue->tail = 0;
     queue->size = 0;
-    queue->data[MAX];
   return queue;
 }
 
@@ -42,10 +41,21 @@ int queue_is_empty(DSqueue* queue) {
   return 0;
 }
 
+int  queue_enqueue(DSqueue* queue, int value) {
+  check_pointer(queue);
+  if(queue_is_full(queue)) return 0;
+  queue->data[queue->tail] = value;
+  queue->tail++;
+  queue->size++;
+  return 1;
+}
+
 void check_pointer(void *p){
   if(p == NULL) abort();
 }
 
 void main(){
   DSqueue* queue = queue_create();
+  queue_enqueue(queue,1);
+  queue_enqueue(queue,3);
 }
