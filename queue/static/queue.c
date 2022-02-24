@@ -25,6 +25,15 @@ void queue_free(DSqueue* queue) {
   free(queue);
 }
 
+int queue_size(DSqueue* queue) {
+  check_pointer(queue);
+  return queue->size;
+}
+
+void check_pointer(void *p){
+  if(p == NULL) abort();
+}
+
 void main(){
   DSqueue* queue = queue_create();
   queue_free(queue);
