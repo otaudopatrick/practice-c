@@ -36,6 +36,12 @@ int queue_is_full(DSqueue* queue) {
   return 0;
 }
 
+int queue_is_empty(DSqueue* queue) {
+  check_pointer(queue);
+  if(queue->size == 0) return 1;
+  return 0;
+}
+
 void check_pointer(void *p){
   if(p == NULL) abort();
 }
