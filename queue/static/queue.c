@@ -30,11 +30,16 @@ int queue_size(DSqueue* queue) {
   return queue->size;
 }
 
+int queue_is_full(DSqueue* queue) {
+  check_pointer(queue);
+  if(queue->size == MAX) return 1;
+  return 0;
+}
+
 void check_pointer(void *p){
   if(p == NULL) abort();
 }
 
 void main(){
   DSqueue* queue = queue_create();
-  queue_free(queue);
 }
