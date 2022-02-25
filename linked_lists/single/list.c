@@ -65,11 +65,25 @@ int list_push_front(DSList* list, int value) {
   }
   return 1;
 }
+int list_push_back(DSList* list, int value) {
+  if(list == NULL)  return -1;
+  Node* node  = create_node(value);
+  Node* aux  = (*list);
+  while (aux->next != NULL)
+  {
+    aux = aux ->next;
+  }
+  aux->next = node;
+  return 1;
+}
+
 void main()
 {
   DSList* list = list_create();
   list_push_front(list, 10);
   list_push_front(list, 39);
+  list_push_back(list, 234);
+  list_push_back(list, 591);
   int c = list_size(list);
 }
 
