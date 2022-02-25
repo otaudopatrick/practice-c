@@ -9,6 +9,7 @@ struct node
 };
 
 typedef  struct  node Node;
+Node* get_node_back(DSList* list);
 
 DSList* list_create() {
   DSList* list = (DSList*) malloc(sizeof(DSList));
@@ -101,6 +102,22 @@ int list_front(DSList* list) {
   if(list ==  NULL) abort();
   return (*list)->data;
 }
+int list_back(DSList* list) {
+  if(list ==  NULL) abort();
+   Node* node= get_node_back(list);
+   return node->data;
+}
+
+Node* get_node_back(DSList* list) {
+  if(list == NULL) abort;
+  Node* aux  = (*list);
+  while (aux->next != NULL)
+  {
+    aux = aux ->next;
+  }
+  return aux;
+}
+
 void main()
 {
   DSList* list = list_create();
@@ -111,6 +128,7 @@ void main()
   list_pop_back(list);
   int c = list_size(list);
   int d = list_front(list);
+  int e = list_back(list);
   printf("List size: %d ", list_size(list));
 }
 
