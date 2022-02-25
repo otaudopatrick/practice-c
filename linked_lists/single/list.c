@@ -46,10 +46,30 @@ int list_empty(DSList* list) {
   if(*list == NULL) return 1;
   return 0;
 }
-
+Node* create_node(int value) {
+  Node* node = (Node*) malloc(sizeof(Node));
+  if(node !=  NULL) {
+    node->data = value;
+    node->next = NULL;
+    return node;
+  }
+}
+int list_push_front(DSList* list, int value) {
+  if(list == NULL)  return -1;
+  Node* node  = create_node(value);
+  if((*list) == NULL) {
+    (*list) = node;
+  }else {
+    node->next =(*list);
+    (*list)  = node;
+  }
+  return 1;
+}
 void main()
 {
   DSList* list = list_create();
+  list_push_front(list, 10);
+  list_push_front(list, 39);
   int c = list_size(list);
 }
 

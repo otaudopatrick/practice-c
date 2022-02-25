@@ -4,3 +4,5 @@ DSList* list_create();
 void queue_free(DSList* list);
 int list_size(DSList* list);
 int list_empty(DSList* list);
+int list_push_front(DSList* list, int value);
+// Node* create_node(int value);
