@@ -29,9 +29,22 @@ void queue_free(DSList* list) {
     free(list);
   }
 }
+
+int list_size(DSList* list) {
+  if(list == NULL) return -1;
+  int count = 0;
+  Node* node= (*list);
+  while (node != NULL)
+  {
+    count++;
+    node = node->next;
+  }
+  return count;
+}
+
 void main()
 {
   DSList* list = list_create();
-  queue_free(list);
+  int c = list_size(list);
 }
 
