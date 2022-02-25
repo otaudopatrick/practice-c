@@ -10,5 +10,4 @@ int list_pop_back(DSList* list);
 int list_front(DSList* list);
 int list_back(DSList* list);
 int list_insert(DSList* list, int index, int value);
-
-
+int list_erase(DSList* list, int index);

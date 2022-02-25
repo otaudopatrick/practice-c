@@ -7,8 +7,14 @@ struct node
   int data;
   struct node* next;
 };
+struct previouAndNext {
+  struct node* previous;
+  struct node* next;
+};
 
 typedef  struct  node Node;
+typedef  struct  previouAndNext PreviousAndNext;
+
 Node* get_node_back(DSList* list);
 
 DSList* list_create() {
@@ -128,7 +134,27 @@ int list_insert(DSList* list, int index, int value) {
   }
   return 1;
 }
-
+int list_erase(DSList* list, int index) {
+  if(list == NULL) abort();
+  if((*list == NULL)) abort();
+  
+  int count = 0;
+  Node *previous, *node = (*list);
+  while (count!=index)
+  {
+    previous =  node; 
+    node = node->next;
+    count++;
+  }
+  if(node == (*list)) {
+    free((*list));
+  }else {
+    Node* aux = node;
+    previous->next = aux->next;
+    free(aux);
+  }
+  return 1;
+}
 Node* get_node_back(DSList* list) {
   if(list == NULL) abort;
   Node* aux  = (*list);
@@ -151,6 +177,7 @@ void main()
   int d = list_front(list);
   int e = list_back(list);
   list_insert(list,0, 78);
+  list_erase(list, 1);
   printf("List size: %d ", list_size(list));
 }
 
