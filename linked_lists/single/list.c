@@ -107,6 +107,27 @@ int list_back(DSList* list) {
    Node* node= get_node_back(list);
    return node->data;
 }
+int list_insert(DSList* list, int index, int value) {
+  if(list== NULL) abort();
+  if(index > (list_size(list)- 1)) abort();
+  int count = 0;
+  Node *previous, *node = (*list);
+  while (count!=index)
+  {
+    previous =  node;
+    node = node->next;
+    count++;
+  }
+  Node* newNode = create_node(value);
+  if(node == (*list)) {
+    newNode->next = (*list);
+    (*list) = newNode;
+  }else {
+    previous->next = newNode;
+    newNode->next = node;
+  }
+  return 1;
+}
 
 Node* get_node_back(DSList* list) {
   if(list == NULL) abort;
@@ -129,6 +150,7 @@ void main()
   int c = list_size(list);
   int d = list_front(list);
   int e = list_back(list);
+  list_insert(list,0, 78);
   printf("List size: %d ", list_size(list));
 }
 
