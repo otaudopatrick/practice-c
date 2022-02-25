@@ -17,9 +17,21 @@ DSList* list_create() {
   }
   return list;
 }
+void queue_free(DSList* list) {
+  if(list != NULL) {
 
+    while ( (*list)  != NULL)
+    {
+      Node* node = (*list);
+      (*list) = node->next;
+      free(node);
+    }
+    free(list);
+  }
+}
 void main()
 {
   DSList* list = list_create();
+  queue_free(list);
 }
 
