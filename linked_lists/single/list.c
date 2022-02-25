@@ -76,7 +76,26 @@ int list_push_back(DSList* list, int value) {
   aux->next = node;
   return 1;
 }
-
+int list_pop_back(DSList* list) {
+  if(list == NULL) abort();
+  if((*list)  ==  NULL) abort();
+  int value;
+  Node *previous, *node = (*list);
+  while (node->next != NULL)
+  {
+    previous =  node;
+    node = node->next;
+  }
+  value = node->data;
+  if(node == (*list)) {
+    *list = node->next;
+  }
+  else  {
+    previous->next = node->next;
+  }
+  free(node);
+  return value;
+}
 void main()
 {
   DSList* list = list_create();
@@ -84,6 +103,8 @@ void main()
   list_push_front(list, 39);
   list_push_back(list, 234);
   list_push_back(list, 591);
+  list_pop_back(list);
   int c = list_size(list);
+  printf("List size: %d ", list_size(list));
 }
 
