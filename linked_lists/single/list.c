@@ -96,6 +96,11 @@ int list_pop_back(DSList* list) {
   free(node);
   return value;
 }
+
+int list_front(DSList* list) {
+  if(list ==  NULL) abort();
+  return (*list)->data;
+}
 void main()
 {
   DSList* list = list_create();
@@ -105,6 +110,7 @@ void main()
   list_push_back(list, 591);
   list_pop_back(list);
   int c = list_size(list);
+  int d = list_front(list);
   printf("List size: %d ", list_size(list));
 }
 
