@@ -41,6 +41,11 @@ int list_size(DSList* list) {
   }
   return count;
 }
+int list_empty(DSList* list) {
+  if(list == NULL) return  -1;
+  if(*list == NULL) return 1;
+  return 0;
+}
 
 void main()
 {
